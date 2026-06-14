@@ -613,15 +613,22 @@
   <!-- Emergency Numbers -->
   <div class="info-card" style="margin-top:1rem;">
     <div class="section-title" style="font-size:.95rem;margin-bottom:.8rem;">📞 आपातकालीन नंबर</div>
-    <div class="info-row"><span class="info-icon">🚓</span><span class="info-key">पुलिस</span><span class="info-val">112</span></div>
-    <div class="info-row"><span class="info-icon">🚑</span><span class="info-key">एम्बुलेंस</span><span class="info-val">102</span></div>
+    <div class="info-row"><span class="info-icon">🚓</span><span class="info-key">पुलिस</span><span class="info-val">100</span></div>
+    <div class="info-row"><span class="info-icon">🚑</span><span class="info-key">एम्बुलेंस</span><span class="info-val">108</span></div>
     <div class="info-row"><span class="info-icon">🔥</span><span class="info-key">दमकल</span><span class="info-val">101</span></div>
-    <div class="info-row"><span class="info-icon">♀️</span><span class="info-key">महिला हेल्पलाइन</span><span class="info-val">1090</span></div>
+    <div class="info-row"><span class="info-icon">♀️</span><span class="info-key">महिला हेल्पलाइन</span><span class="info-val">181</span></div>
     <div class="info-row"><span class="info-icon">👶</span><span class="info-key">चाइल्डलाइन</span><span class="info-val">1098</span></div>
     <div class="info-row"><span class="info-icon">🧑‍⚕️</span><span class="info-key">स्वास्थ्य हेल्पलाइन</span><span class="info-val">104</span></div>
   </div>
-</section
-  
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>🌿 <strong>ग्राम पंचायत भैसानी इस्लामपुर</strong></div>
+  <div style="margin:.4rem 0;">तहसील शामली | जिला शामली | उत्तर प्रदेश</div>
+  <div style="margin-top:.6rem;opacity:.7;font-size:.72rem;">प्रधान: आदिल प्रधान | जनगणना डेटा: Census of India 2011</div>
+  <div style="margin-top:.4rem;opacity:.6;font-size:.7rem;">© 2026 भैसानी इस्लामपुर — सभी अधिकार सुरक्षित</div>
+</footer>
 
 <script>
 // Tab switching
@@ -646,75 +653,6 @@ const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.1 });
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-</script><!-- === यहाँ से नया काम शुरू === -->
-<style> @media(max-width: 768px) { .nav-brand { margin-left: 55px !important; } } </style>
-<!-- 1. Menu Icon (☰) -->
-<div class="menu-icon" onclick="toggleMenu()" style="position:fixed; top:12px; left:15px; z-index:1000; font-size:24px; cursor:pointer; color:white; background:rgba(26, 107, 58, 0.9); padding:5px 12px; border-radius:6px; box-shadow:0 2px 5px rgba(0,0,0,0.2);">☰</div>
-
-<!-- 2. Hidden Navigation Menu -->     <!-- Google Translate Language Option -->
-    <div style="padding: 10px 25px; border-bottom: 1px solid #d6e4da;">
-        <span style="font-size:0.85rem; color:#5a6472; font-weight:bold;">🌐 भाषा चुनें (Language):</span>
-        <div id="google_translate_element" style="margin-top:8px;"></div>
-    </div>
-
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'hi', 
-                includedLanguages: 'en,hi,ur', /* English, Hindi, Urdu */
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-            }, 'google_translate_element');
-        }
-    </script>
-    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-  
-<nav id="nav-menu" style="display:none; background:#f9fbf9; position:fixed; top:0; left:0; width:100%; height:100%; z-index:999; padding-top:70px; overflow-y:auto;">
-    <h3 style="padding:0 25px; color:#1a6b3a; margin-bottom:10px;">मेनू (Menu)</h3>
-    <a href="#mission" onclick="toggleMenu()" style="display:block; padding:15px 25px; text-decoration:none; color:#1a1a1a; font-weight:600; border-bottom:1px solid #d6e4da;">🏛️ मिशन: जागरूक ग्राम</a>
-    <a href="#about" onclick="toggleMenu()" style="display:block; padding:15px 25px; text-decoration:none; color:#1a1a1a; font-weight:600; border-bottom:1px solid #d6e4da;">📖 गांव का परिचय</a>
-    <a href="#schemes" onclick="toggleMenu()" style="display:block; padding:15px 25px; text-decoration:none; color:#1a1a1a; font-weight:600; border-bottom:1px solid #d6e4da;">📋 सरकारी योजनाएं</a>
-    <a href="#contact" onclick="toggleMenu()" style="display:block; padding:15px 25px; text-decoration:none; color:#1a1a1a; font-weight:600; border-bottom:1px solid #d6e4da;">📞 संपर्क / शिकायत</a>
-    <button onclick="toggleMenu()" style="margin:25px; padding:10px 20px; background:#c0392b; color:white; border:none; border-radius:6px; font-weight:bold; cursor:pointer;">❌ बंद करें</button>
-</nav>
-
-<!-- 3. Mission Section Card -->
-<section id="mission" style="background:#fff; padding:25px; margin:20px auto; max-width:900px; border-radius:12px; border:1px solid #d6e4da; box-shadow:0 2px 8px rgba(0,0,0,0.06);">
-    <h2 style="color:#1a6b3a; border-left:4px solid #e07b00; padding-left:10px; margin-bottom:15px; font-family:'Noto Serif Devanagari', serif; font-size:1.4rem; font-weight:700;">🏛️ मिशन: जागरूक ग्राम</h2>
-    <p style="font-size:0.9rem; color:#5a6472; line-height:1.6; margin-bottom:15px;">हमारा लक्ष्य भैसानी इस्लामपुर को एक आदर्श और डिजिटल ग्राम बनाना है। इसके लिए हम निम्नलिखित बिंदुओं पर काम कर रहे हैं:</p>
-    
-    <ul style="padding-left:20px; color:#1a1a1a; font-size:0.85rem; line-height:1.8; margin-bottom:20px;">
-        <li><b>🎓 शिक्षा:</b> स्कूलों और मदरसों में आधुनिक और कंप्यूटर शिक्षा का समावेश।</li>
-        <li><b>🧹 स्वच्छता:</b> नालियों का पक्का निर्माण और उचित कचरा प्रबंधन।</li>
-        <li><b>📊 पारदर्शिता:</b> पंचायत के खर्चों और कार्यों का ऑनलाइन रिपोर्ट कार्ड।</li>
-        <li><b>💻 जागरूकता:</b> युवाओं को सरकारी योजनाओं (UPI, Schemes) की ट्रेनिंग।</li>
-    </ul>
-    
-    <a href="mission_report.pdf" style="display:inline-block; padding:10px 20px; background:#1a6b3a; color:white; text-decoration:none; border-radius:8px; font-weight:600; font-size:0.85rem;">📥 विस्तृत कार्य-योजना डाउनलोड करें (PDF)</a>
-</section>
-
-<!-- 4. Script for Menu -->
-<script>
-    function toggleMenu() {
-        var menu = document.getElementById('nav-menu');
-        menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
-    }
 </script>
-
-<!-- === नया काम यहाँ खत्म === -->
-  
 </body>
 </html>
-  <!-- यह आपके मिशन कार्ड की आखिरी लाइन होगी -->
-   <a href="mission_report.pdf" ... >📥 विस्तृत कार्य-योजना डाउनलोड करें (PDF)</a>
-</section>
-
-<!-- 👇👇 Line 625-631 वाला Footer यहाँ पेस्ट करें 👇👇 -->
-<footer>
-  ... (आपका फुटर कोड) ...
-</footer>
-<!-- 👆👆 ------------------------------------- 👆👆 -->
-
-<script>
-    function toggleMenu() {
-...
-      
