@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>भैसानी इस्लामपुर — ग्राम पंचायत</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700&family=Noto+Serif+Devanagari:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green:    #1a6b3a;
+    --green-lt: #e8f5ed;
+    --saffron:  #e07b00;
+    --saffron-lt: #fff4e0;
+    --ink:      #1a1a1a;
+    --muted:    #5a6472;
+    --border:   #d6e4da;
+    --white:    #ffffff;
+    --cream:    #f9fbf9;
+    --red:      #c0392b;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', 'Noto Sans Devanagari', sans-serif; background: var(--cream); color: var(--ink); }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top:0; z-index:100;
+    background: var(--green);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 1.5rem; height: 56px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.25);
+  }
+  .nav-brand { color:#fff; font-family:'Noto Serif Devanagari',serif; font-size:1.1rem; font-weight:700; }
+  .nav-links { display:flex; gap:.2rem; flex-wrap:wrap; }
+  .nav-links a {
+    color: rgba(255,255,255,.85); text-decoration:none; font-size:.78rem;
+    padding:.35rem .6rem; border-radius:4px; transition: background .2s;
+  }
+  .nav-links a:hover { background: rgba(255,255,255,.18); color:#fff; }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, #0f4726 0%, #1a6b3a 60%, #e07b00 100%);
+    color:#fff; text-align:center; padding:3.5rem 1.5rem 4rem;
+    position:relative; overflow:hidden;
+  }
+  .hero::before {
+    content:''; position:absolute; inset:0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .hero-flag { font-size:3.5rem; margin-bottom:.5rem; }
+  .hero h1 { font-family:'Noto Serif Devanagari',serif; font-size:clamp(1.8rem,5vw,3rem); font-weight:700; line-height:1.2; }
+  .hero h1 span { color:#ffd166; }
+  .hero-sub { font-size:.95rem; opacity:.85; margin:.6rem 0 1.5rem; letter-spacing:.05em; }
+  .hero-badges { display:flex; gap:.6rem; justify-content:center; flex-wrap:wrap; }
+  .badge { background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.3); border-radius:20px; padding:.3rem .9rem; font-size:.8rem; backdrop-filter:blur(4px); }
+
+  /* ── SECTIONS ── */
+  section { padding:2.5rem 1.2rem; max-width:900px; margin:0 auto; }
+  .section-title {
+    font-family:'Noto Serif Devanagari',serif;
+    font-size:1.4rem; font-weight:700; color: var(--green);
+    border-left:4px solid var(--saffron); padding-left:.8rem;
+    margin-bottom:1.4rem;
+  }
+  .section-divider { height:1px; background: var(--border); margin:0 1.2rem; }
+
+  /* ── STATS GRID ── */
+  .stats-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(140px,1fr)); gap:.9rem; }
+  .stat-card {
+    background:#fff; border:1px solid var(--border); border-radius:10px;
+    padding:1rem .8rem; text-align:center;
+    box-shadow:0 1px 4px rgba(0,0,0,.06);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .stat-card:hover { transform:translateY(-2px); box-shadow:0 4px 12px rgba(0,0,0,.1); }
+  .stat-num { font-size:1.6rem; font-weight:700; color:var(--green); }
+  .stat-label { font-size:.75rem; color:var(--muted); margin-top:.2rem; }
+  .stat-sub { font-size:.7rem; color:#999; }
+
+  /* ── INFO CARD ── */
+  .info-card {
+    background:#fff; border:1px solid var(--border); border-radius:12px;
+    padding:1.3rem; margin-bottom:1rem;
+    box-shadow:0 1px 4px rgba(0,0,0,.06);
+  }
+  .info-row { display:flex; gap:.8rem; padding:.5rem 0; border-bottom:1px solid #f0f0f0; align-items:flex-start; }
+  .info-row:last-child { border-bottom:none; }
+  .info-icon { font-size:1.1rem; min-width:28px; text-align:center; }
+  .info-key { font-size:.8rem; color:var(--muted); width:140px; flex-shrink:0; }
+  .info-val { font-size:.88rem; font-weight:500; color:var(--ink); }
+
+  /* ── PRADHAN CARD ── */
+  .pradhan-card {
+    background: linear-gradient(135deg, var(--green-lt), #fff);
+    border:2px solid var(--green); border-radius:14px;
+    padding:1.5rem; display:flex; gap:1.2rem; align-items:center;
+    flex-wrap:wrap;
+  }
+  .pradhan-avatar {
+    width:70px; height:70px; border-radius:50%;
+    background: var(--green); color:#fff; display:flex;
+    align-items:center; justify-content:center; font-size:2rem;
+    flex-shrink:0;
+  }
+  .pradhan-name { font-size:1.2rem; font-weight:700; color:var(--green); }
+  .pradhan-role { font-size:.82rem; color:var(--muted); margin-top:.2rem; }
+  .pradhan-quote {
+    background:#fff; border-left:3px solid var(--saffron); border-radius:4px;
+    padding:.6rem .8rem; margin-top:.8rem; font-size:.82rem; color:var(--muted); font-style:italic;
+  }
+
+  /* ── SCHEMES ── */
+  .schemes-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:.9rem; }
+  .scheme-card {
+    background:#fff; border:1px solid var(--border); border-radius:10px;
+    padding:1rem; border-top:3px solid var(--saffron);
+    box-shadow:0 1px 4px rgba(0,0,0,.06);
+  }
+  .scheme-card h4 { font-size:.9rem; font-weight:600; color:var(--ink); margin-bottom:.3rem; }
+  .scheme-card p { font-size:.78rem; color:var(--muted); line-height:1.5; }
+  .scheme-badge { display:inline-block; background:var(--saffron-lt); color:var(--saffron); font-size:.7rem; font-weight:600; padding:.15rem .5rem; border-radius:10px; margin-bottom:.5rem; }
+
+  /* ── NOTICE BOARD ── */
+  .notice-list { list-style:none; }
+  .notice-item {
+    background:#fff; border:1px solid var(--border); border-radius:8px;
+    padding:.9rem 1rem; margin-bottom:.7rem; display:flex; gap:.9rem; align-items:flex-start;
+    box-shadow:0 1px 3px rgba(0,0,0,.05);
+  }
+  .notice-date { background:var(--green); color:#fff; border-radius:6px; padding:.3rem .5rem; text-align:center; font-size:.7rem; min-width:42px; font-weight:600; line-height:1.3; }
+  .notice-text { font-size:.85rem; color:var(--ink); }
+  .notice-tag { font-size:.7rem; color:var(--green); font-weight:600; }
+
+  /* ── AWARENESS ── */
+  .awareness-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:.9rem; }
+  .awareness-card {
+    background:#fff; border:1px solid var(--border); border-radius:10px;
+    padding:1.1rem; text-align:center;
+    box-shadow:0 1px 4px rgba(0,0,0,.06);
+    transition: transform .2s;
+  }
+  .awareness-card:hover { transform:translateY(-2px); }
+  .awareness-icon { font-size:2rem; margin-bottom:.5rem; }
+  .awareness-card h4 { font-size:.88rem; font-weight:600; color:var(--green); margin-bottom:.4rem; }
+  .awareness-card p { font-size:.76rem; color:var(--muted); line-height:1.5; }
+
+  /* ── CAMPAIGN ── */
+  .campaign-banner {
+    background: linear-gradient(120deg, var(--saffron) 0%, #f0a500 100%);
+    border-radius:12px; padding:1.5rem; color:#fff; margin-bottom:1rem;
+    position:relative; overflow:hidden;
+  }
+  .campaign-banner::after { content:'📣'; position:absolute; right:1rem; top:50%; transform:translateY(-50%); font-size:3rem; opacity:.3; }
+  .campaign-banner h3 { font-size:1.1rem; font-weight:700; margin-bottom:.4rem; }
+  .campaign-banner p { font-size:.82rem; opacity:.9; }
+  .campaign-steps { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:.8rem; }
+  .campaign-step {
+    background:#fff; border:1px solid var(--border); border-radius:8px;
+    padding:.9rem; display:flex; gap:.7rem; align-items:flex-start;
+  }
+  .step-num { background:var(--green); color:#fff; border-radius:50%; width:26px; height:26px; display:flex; align-items:center; justify-content:center; font-size:.78rem; font-weight:700; flex-shrink:0; }
+  .step-text h5 { font-size:.85rem; font-weight:600; }
+  .step-text p { font-size:.75rem; color:var(--muted); margin-top:.2rem; }
+
+  /* ── HYGIENE & BANK ── */
+  .tips-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:.8rem; }
+  .tip-card {
+    background:#fff; border:1px solid var(--border); border-radius:10px;
+    padding:.9rem; text-align:center; font-size:.78rem; color:var(--muted);
+    box-shadow:0 1px 3px rgba(0,0,0,.05);
+  }
+  .tip-card .t-icon { font-size:1.8rem; margin-bottom:.4rem; }
+  .tip-card h5 { font-size:.83rem; font-weight:600; color:var(--ink); margin-bottom:.3rem; }
+
+  /* ── FORMS ── */
+  .form-card {
+    background:#fff; border:1px solid var(--border); border-radius:12px;
+    padding:1.5rem; box-shadow:0 1px 4px rgba(0,0,0,.06);
+  }
+  .form-tabs { display:flex; gap:.5rem; margin-bottom:1.2rem; flex-wrap:wrap; }
+  .tab-btn {
+    padding:.4rem .9rem; border:1px solid var(--green); border-radius:20px;
+    background:#fff; color:var(--green); font-size:.8rem; cursor:pointer; transition: all .2s;
+  }
+  .tab-btn.active { background:var(--green); color:#fff; }
+  .form-group { margin-bottom:.9rem; }
+  .form-group label { display:block; font-size:.8rem; color:var(--muted); margin-bottom:.3rem; font-weight:500; }
+  .form-group input, .form-group select, .form-group textarea {
+    width:100%; padding:.55rem .8rem; border:1px solid var(--border);
+    border-radius:7px; font-size:.85rem; outline:none; font-family:inherit;
+    transition:border-color .2s;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color:var(--green); }
+  .form-group textarea { min-height:90px; resize:vertical; }
+  .submit-btn {
+    background:var(--green); color:#fff; border:none; border-radius:8px;
+    padding:.65rem 1.8rem; font-size:.88rem; font-weight:600; cursor:pointer;
+    transition:background .2s; font-family:inherit;
+  }
+  .submit-btn:hover { background:#145430; }
+  .success-msg { display:none; background:var(--green-lt); color:var(--green); border:1px solid var(--green); border-radius:8px; padding:.7rem 1rem; font-size:.85rem; margin-top:.7rem; }
+
+  /* ── GALLERY ── */
+  .gallery-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:.7rem; }
+  .gallery-item {
+    background: linear-gradient(135deg, #d4edda, #c8e6c9);
+    border-radius:10px; aspect-ratio:4/3; display:flex;
+    align-items:center; justify-content:center; font-size:2.5rem;
+    cursor:pointer; border:1px solid var(--border);
+    transition:transform .2s;
+  }
+  .gallery-item:hover { transform:scale(1.03); }
+  .gallery-caption { font-size:.7rem; color:var(--muted); text-align:center; margin-top:.3rem; }
+
+  /* ── ENCOURAGEMENT ── */
+  .encourage-cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:.9rem; }
+  .enc-card {
+    border-radius:12px; padding:1.2rem; color:#fff; position:relative; overflow:hidden;
+  }
+  .enc-card.c1 { background:linear-gradient(135deg,#1a6b3a,#2d9e5e); }
+  .enc-card.c2 { background:linear-gradient(135deg,#e07b00,#f0a500); }
+  .enc-card.c3 { background:linear-gradient(135deg,#1565c0,#1976d2); }
+  .enc-card.c4 { background:linear-gradient(135deg,#6a1b9a,#8e24aa); }
+  .enc-card h4 { font-size:1rem; font-weight:700; margin-bottom:.4rem; }
+  .enc-card p { font-size:.78rem; opacity:.9; line-height:1.5; }
+  .enc-card .enc-icon { font-size:2rem; margin-bottom:.6rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    background:var(--green); color:rgba(255,255,255,.85);
+    text-align:center; padding:1.5rem 1rem; margin-top:2rem;
+    font-size:.8rem;
+  }
+  footer strong { color:#fff; }
+
+  /* ── SCROLL FADE ── */
+  .fade-in { opacity:0; transform:translateY(20px); transition:opacity .5s, transform .5s; }
+  .fade-in.visible { opacity:1; transform:none; }
+
+  @media(max-width:600px) {
+    .nav-links { display:none; }
+    .hero h1 { font-size:1.6rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">🌿 भैसानी इस्लामपुर</div>
+  <div class="nav-links">
+    <a href="#about">परिचय</a>
+    <a href="#pradhan">प्रधान</a>
+    <a href="#stats">जनसंख्या</a>
+    <a href="#schemes">योजनाएं</a>
+    <a href="#notice">सूचना</a>
+    <a href="#campaign">अभियान</a>
+    <a href="#hygiene">स्वच्छता</a>
+    <a href="#bank">बैंक</a>
+    <a href="#awareness">जागरूकता</a>
+    <a href="#education">शिक्षा</a><a href="#gallery">फ़ोटो</a>
+    <a href="#contact">संपर्क</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-flag">🇮🇳</div>
+  <h1>ग्राम पंचायत<br><span>भैसानी इस्लामपुर</span></h1>
+  <div class="hero-sub">भैसानी इस्लामपुर • (मैसानी इस्माइलपुर) • तहसील शामली • जिला शामली • उत्तर प्रदेश</div>
+  <div class="hero-badges">
+    <span class="badge">📍 शामली से 23 किमी</span>
+    <span class="badge">🏘️ 2,368 परिवार</span>
+    <span class="badge">👥 16,605 जनसंख्या</span>
+    <span class="badge">🌾 क्षेत्रफल: 994.56 हेक्टेयर</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="fade-in">
+  <div class="section-title">📖 गांव का परिचय</div>
+  <div class="info-card">
+    <p style="font-size:.88rem;line-height:1.8;color:var(--muted);margin-bottom:1rem;">
+      भैसानी इस्लामपुर (जिसे मैसानी इस्माइलपुर भी कहा जाता है) उत्तर प्रदेश के शामली जिले की शामली तहसील में स्थित एक बड़ा और ऐतिहासिक गांव है। यह शामली तहसील का <strong>सबसे बड़ा गांव</strong> है जनसंख्या की दृष्टि से। यह गांव थाना भवन से लगभग 5 किमी और जिला मुख्यालय शामली से लगभग 23 किमी की दूरी पर स्थित है।
+    </p>
+    <div class="info-row">
+      <span class="info-icon">📌</span>
+      <span class="info-key">ग्राम पंचायत</span>
+      <span class="info-val">भैसानी इस्लामपुर</span>
+    </div>
+    <div class="info-row">
+      <span class="info-icon">🏛️</span>
+      <span class="info-key">C.D. Block</span>
+      <span class="info-val">थाना भवन</span>
+    </div>
+    <div class="info-row">
+      <span class="info-icon">🗺️</span>
+      <span class="info-key">तहसील</span>
+      <span class="info-val">शामली</span>
+    </div>
+    <div class="info-row">
+      <span class="info-icon">🌍</span>
+      <span class="info-key">राज्य</span>
+      <span class="info-val">उत्तर प्रदेश, भारत</span>
+    </div>
+    <div class="info-row">
+      <span class="info-icon">📐</span>
+      <span class="info-key">कुल क्षेत्रफल</span>
+      <span class="info-val">994.56 हेक्टेयर</span>
+    </div>
+    <div class="info-row">
+      <span class="info-icon">🏫</span>
+      <span class="info-key">निकटतम शहर</span>
+      <span class="info-val">थाना भवन (~5 किमी) | शामली (~23 किमी)</span>
+    </div>
+    <div class="info-row">
+      <span class="info-icon">📜</span>
+      <span class="info-key">जनगणना कोड</span>
+      <span class="info-val">110664 (Census 2011)</span>
+    </div>
+  </div>
+</section>
+<div class="section-divider"></div>
+
+<!-- PRADHAN -->
+<section id="pradhan" class="fade-in">
+  <div class="section-title">👤 ग्राम प्रधान</div>
+  <div class="pradhan-card">
+    <div class="pradhan-avatar">👨‍💼</div>
+    <div>
+      <div class="pradhan-name">श्री आदिल प्रधान</div>
+      <div class="pradhan-role">ग्राम प्रधान — भैसानी इस्लामपुर</div>
+      <div class="pradhan-role" style="margin-top:.2rem;">📞 9639149639</div>
+      <div class="pradhan-quote">
+        "हमारा गांव हमारी पहचान है। शिक्षा, स्वच्छता और विकास — तीनों को मिलकर आगे बढ़ाना हमारा लक्ष्य है।"
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:1rem;">
+    <div class="info-card">
+      <div class="section-title" style="font-size:1rem;margin-bottom:.8rem;">🏛️ पंचायत समिति</div>
+      <div class="info-row"><span class="info-icon">👑</span><span class="info-key">ग्राम प्रधान</span><span class="info-val">आदिल प्रधान</span></div>
+      <div class="info-row"><span class="info-icon">📋</span><span class="info-key">ग्राम सचिव</span><span class="info-val">— (यहाँ नाम जोड़ें)</span></div>
+      <div class="info-row"><span class="info-icon">⚖️</span><span class="info-key">लेखपाल</span><span class="info-val">— (यहाँ नाम जोड़ें)</span></div>
+      <div class="info-row"><span class="info-icon">🗳️</span><span class="info-key">वार्ड सदस्य</span><span class="info-val">— (विवरण जोड़ें)</span></div>
+    </div>
+  </div>
+</section>
+<div class="section-divider"></div>
+
+<!-- STATS -->
+<section id="stats" class="fade-in">
+  <div class="section-title">📊 जनसंख्या आंकड़े (Census 2011)</div>
+  <div class="stats-grid">
+    <div class="stat-card"><div class="stat-num">16,605</div><div class="stat-label">कुल जनसंख्या</div></div>
+    <div class="stat-card"><div class="stat-num">8,723</div><div class="stat-label">पुरुष</div></div>
+    <div class="stat-card"><div class="stat-num">7,882</div><div class="stat-label">महिलाएं</div></div>
+    <div class="stat-card"><div class="stat-num">2,368</div><div class="stat-label">कुल परिवार</div></div>
+    <div class="stat-card"><div class="stat-num">3,915</div><div class="stat-label">बाल जनसंख्या (0–6)</div><div class="stat-sub">23.58% कुल का</div></div>
+    <div class="stat-card"><div class="stat-num">904</div><div class="stat-label">लिंगानुपात</div><div class="stat-sub">प्रति 1000 पुरुष</div></div>
+    <div class="stat-card"><div class="stat-num">56.76%</div><div class="stat-label">साक्षरता दर</div><div class="stat-sub">पुरुष 64.94% | महिला 47.71%</div></div>
+    <div class="stat-card"><div class="stat-num">4,373</div><div class="stat-label">कार्यशील जनसंख्या</div></div>
+    <div class="stat-card"><div class="stat-num">520</div><div class="stat-label">अनुसूचित जाति (SC)</div><div class="stat-sub">3.13% जनसंख्या</div></div>
+    <div class="stat-card"><div class="stat-num">19</div><div class="stat-label">अनुसूचित जनजाति (ST)</div></div>
+  </div>
+  <div style="background:var(--saffron-lt);border:1px solid #f0c080;border-radius:8px;padding:.8rem 1rem;margin-top:1rem;font-size:.8rem;color:#7a4f00;">
+    ⚠️ ये आंकड़े जनगणना 2011 पर आधारित हैं। वर्तमान जनसंख्या इससे अधिक हो सकती है।
+  </div>
+</section>
+<div class="section-divider"></div>
+
+<!-- SCHEMES -->
+<section id="schemes" class="fade-in">
+  <div class="section-title">📋 सरकारी योजनाएं</div>
+  <div class="schemes-grid">
+    <div class="scheme-card"><span class="scheme-badge">आवास</span><h4>प्रधानमंत्री आवास योजना (ग्रामीण)</h4><p>गरीब परिवारों को पक्का मकान। पात्रता के लिए ग्राम पंचायत से संपर्क करें।</p></div>
+    <div class="scheme-card"><span class="scheme-badge">किसान</span><h4>PM किसान सम्मान निधि</h4><p>किसानों को ₹6,000 प्रति वर्ष तीन किश्तों में। pmkisan.gov.in पर रजिस्ट्रेशन।</p></div>
+    <div class="scheme-card"><span class="scheme-badge">स्वास्थ्य</span><h4>आयुष्मान भारत योजना</h4><p>₹5 लाख तक का निःशुल्क इलाज। आयुष्मान कार्ड के लिए आशा कार्यकर्ता से मिलें।</p></div>
+    <div class="scheme-card"><span class="scheme-badge">शौचालय</span><h4>स्वच्छ भारत मिशन</h4><p>शौचालय निर्माण पर सरकारी सहायता। खुले में शौच मुक्त गांव बनाएं।</p></div>
+    <div class="scheme-card"><span class="scheme-badge">महिला</span><h4>महिला समृद्धि योजना / SHG</h4><p>महिला स्वयं सहायता समूहों को ऋण और प्रशिक्षण। अधिक जानकारी के लिए आंगनवाड़ी से संपर्क करें।</p></div>
+    <div class="scheme-card"><span class="scheme-badge">शिक्षा</span><h4>छात्रवृत्ति योजनाएं</h4><p>OBC/SC/ST छात्रों को छात्रवृत्ति। scholarship.up.gov.in पर आवेदन करें।</p></div>
+    <div class="scheme-card"><span class="scheme-badge">रोजगार</span><h4>MGNREGA (नरेगा)</h4><p>100 दिन का गारंटीड रोजगार। जॉब कार्ड के लिए ग्राम पंचायत में संपर्क करें।</p></div>
+    <div class="scheme-card"><span class="scheme-badge">गैस</span><h4>उज्ज्वला योजना</h4><p>BPL परिवारों को मुफ़्त LPG कनेक्शन। नज़दीकी गैस एजेंसी से संपर्क करें।</p></div>
+  </div>
+</section>
+<div class="section-divider"></div>
+
+<!-- NOTICE BOARD -->
+<section id="notice" class="fade-in">
+  <div class="section-title">📢 सूचना पट्ट (Notice Board)</div>
+  <ul class="notice-list">
+    <li class="notice-item">
+      <div class="notice-date">जून<br>2026</div>
+      <div><div class="notice-tag">🏥 स्वास्थ्य</div><div class="notice-text">ग्राम में निःशुल्क स्वास्थ्य शिविर आयोजित। सभी ग्रामवासी लाभ उठाएं।</div></div>
+    </li>
+    <li class="notice-item">
+      <div class="notice-date">जून<br>2026</div>
+      <div><div class="notice-tag">🌾 किसान</div><div class="notice-text">खरीफ फसल बीमा के लिए आवेदन शुरू। अंतिम तिथि से पहले रजिस्ट्रेशन कराएं।</div></div>
+    </li>
+    <li class="notice-item">
+      <div class="notice-date">मई<br>2026</div>
+      <div><div class="notice-tag">🏗️ विकास</div><div class="notice-text">गांव में नई सड़क निर्माण का कार्य प्रारंभ। असुविधा के लिए खेद है।</div></div>
+    </li>
+    <li class="notice-item">
+      <div class="notice-date">मई<br>2026</div>
+      <div><div class="notice-tag">📚 शिक्षा</div><div class="notice-text">छात्रवृत्ति के लिए आवेदन प्रक्रिया शुरू। पात्र छात्र ग्राम पंचायत में जानकारी लें।</div></div>
+    </li>
+  </ul>
+</section>
+<div class="section-divider"></div>
+
+<!-- CAMPAIGN -->
+<section id="campaign" class="fade-in">
+  <div class="section-title">🚀 ग्राम अभियान</div>
+  <div class="campaign-banner">
+    <h3>🌿 "हमारा गांव — हमारी जिम्मेदारी" अभियान</h3>
+    <p>भैसानी इस्लामपुर को एक आदर्श ग्राम बनाने का संकल्प लें। स्वच्छता, शिक्षा, और एकता के साथ आगे बढ़ें।</p>
+  </div>
+  <div class="campaign-steps">
+    <div class="campaign-step"><div class="step-num">1</div><div class="step-text"><h5>पेड़ लगाएं</h5><p>हर घर एक पेड़ — हरा-भरा गांव।</p></div></div>
+    <div class="campaign-step"><div class="step-num">2</div><div class="step-text"><h5>बेटी पढ़ाएं</h5><p>लड़कियों की शिक्षा में सहयोग दें।</p></div></div>
+    <div class="campaign-step"><div class="step-num">3</div><div class="step-text"><h5>कचरा न फेंकें</h5><p>सड़क, नाले और खेत साफ रखें।</p></div></div>
+    <div class="campaign-step"><div class="step-num">4</div><div class="step-text"><h5>वोट ज़रूर दें</h5><p>लोकतंत्र में भागीदारी आपका हक़ है।</p></div></div>
+    <div class="campaign-step"><div class="step-num">5</div><div class="step-text"><h5>बाल विवाह रोकें</h5><p>18 से पहले शादी — नहीं, कभी नहीं।</p></div></div>
+    <div class="campaign-step"><div class="step-num">6</div><div class="step-text"><h5>डिजिटल बनें</h5><p>UPI, Aadhaar, DigiLocker इस्तेमाल करें।</p></div></div>
+  </div>
+</section>
+<div class="section-divider"></div>
+
+<!-- HYGIENE -->
+<section id="hygiene" class="fade-in">
+  <div class="section-title">🧼 स्वच्छता एवं स्वास्थ्य</div>
+  <div class="tips-grid">
+    <div class="tip-card"><div class="t-icon">🚿</div><h5>हाथ धोएं</h5><p>खाने से पहले और शौच के बाद साबुन से हाथ ज़रूर धोएं।</p></div>
+    <div class="tip-card"><div class="t-icon">🚽</div><h5>शौचालय का उपयोग</h5><p>खुले में शौच न करें। शौचालय बनवाने के लिए पंचायत से सहायता लें।</p></div>
+    <div class="tip-card"><div class="t-icon">💧</div><h5>स्वच्छ पानी</h5><p>पीने का पानी ढका रखें। RO या उबला पानी पियें।</p></div>
+    <div class="tip-card"><div class="t-icon">🗑️</div><h5>कचरा प्रबंधन</h5><p>गीला व सूखा कचरा अलग करें। कचरा गड्ढे में डालें।</p></div>
+    <div class="tip-card"><div class="t-icon">🦟</div><h5>मलेरिया से बचें</h5><p>पानी जमा न होने दें। मच्छरदानी का उपयोग करें।</p></div>
+    <div class="tip-card"><div class="t-icon">👶</div><h5>टीकाकरण</h5><p>बच्चों के सभी टीके समय पर लगवाएं। आशा दीदी से संपर्क करें।</p></div>
+    <div class="tip-card"><div class="t-icon">🍎</div><h5>पोषण</h5><p>हरी सब्जियाँ, दालें और दूध बच्चों को रोज़ दें।</p></div>
+    <div class="tip-card"><div class="t-icon">🏥</div><h5>PHC से जुड़ें</h5><p>प्राथमिक स्वास्थ्य केंद्र का नियमित उपयोग करें। झाड़-फूंक से बचें।</p></div>
+  </div>
+</section>
+<div class="section-divider"></div>
+
+<!-- BANK -->
+<section id="bank" class="fade-in">
+  <div class="section-title">🏦 बैंकिंग एवं वित्तीय जागरूकता</div>
+  <div class="info-card" style="margin-bottom:1rem;">
+    <div class="section-title" style="font-size:.95rem;margin-bottom:.8rem;">📍 नज़दीकी बैंक सुविधाएं</div>
+    <div class="info-row"><span class="info-icon">🏦</span><span class="info-key">नज़दीकी शहर</span><span class="info-val">थाना भवन (~5 किमी) | शामली (~23 किमी)</span></div>
+    <div class="info-row"><span class="info-icon">📲</span><span class="info-key">BC Sakhi</span><span class="info-val">ग्राम स्तर पर बैंकिंग सेवा उपलब्ध</span></div>
+    <div class="info-row"><span class="info-icon">💳</div><span class="info-key">Jan Dhan Account</span><span class="info-val">शून्य बैलेंस पर खाता खोलें</span></div>
+    <div class="info-row"><span class="info-icon">📮</span><span class="info-key">India Post Payments Bank</span><span class="info-val">डाकघर में बचत खाता सुविधा</span></div>
+  </div>
+  <div class="tips-grid">
+    <div class="tip-card"><div class="t-icon">📱</div><h5>UPI / PhonePe</h5><p>मोबाइल से पैसे भेजें और पाएं — बिल्कुल मुफ़्त।</p></div>
+    <div class="tip-card"><div class="t-icon">🏧</div><h5>ATM का उपयोग</h5><p>PIN किसी को न बताएं। ATM में कोई मदद न लें।</p></div>
+    <div class="tip-card"><div class="t-icon">📜</div><h5>KCC (किसान क्रेडिट कार्ड)</h5><p>सस्ते ब्याज पर खेती का कर्ज़। बैंक से आवेदन करें।</p></div>
+    <div class="tip-card"><div class="t-icon">🔐</div><h5>साइबर सुरक्षा</h5><p>OTP कभी न बताएं। फोन पर बैंक डिटेल न दें।</p></div>
+    <div class="tip-card"><div class="t-icon">💰</div><h5>बचत की आदत</h5><p>हर महीने थोड़ी-थोड़ी बचत करें — RD/FD में लगाएं।</p></div>
+    <div class="tip-card"><div class="t-icon">📋</div><h5>PM Jan Dhan</h5><p>₹2 लाख बीमा और ओवरड्राफ्ट सुविधा मुफ़्त।</p></div>
+  </div>
+</section>
+<div class="section-divider"></div>
+
+<!-- CIVIC AWARENESS -->
+<section id="awareness" class="fade-in">
+  <div class="section-title">⚖️ नागरिक जागरूकता (Civic Sense)</div>
+  <div class="awareness-grid">
+    <div class="awareness-card"><div class="awareness-icon">🗳️</div><h4>मतदान अधिकार</h4><p>18 वर्ष पूर्ण होने पर मतदाता सूची में नाम जुड़वाएं। हर चुनाव में वोट दें।</p></div>
+    <div class="awareness-card"><div class="awareness-icon">📜</div><h4>RTI — सूचना का अधिकार</h4><p>सरकारी काम में जानकारी मांगने का हक़ है। RTI फाइल करें।</p></div>
+    <div class="awareness-card"><div class="awareness-icon">🤝</div><h4>सामुदायिक भावना</h4><p>झगड़े की जगह मिलकर समस्या सुलझाएं। पंचायत का सहारा लें।</p></div>
+    <div class="awareness-card"><div class="awareness-icon">🚦</div><h4>यातायात नियम</h4><p>बिना हेलमेट न चलाएं। नशे में गाड़ी न चलाएं — जुर्माना और जान का खतरा।</p></div>
+    <div class="awareness-card"><div class="awareness-icon">📚</div><h4>बच्चों की शिक्षा</h4><p>6–14 साल के बच्चों को स्कूल भेजना कानूनी अधिकार और ज़िम्मेदारी है।</p></div>
+    <div class="awareness-card"><div class="awareness-icon">♀️</div><h4>महिला अधिकार</h4><p>घरेलू हिंसा पर 181 हेल्पलाइन पर कॉल करें। महिलाएं संपत्ति में बराबर हकदार हैं।</p></div>
+    <div class="awareness-card"><div class="awareness-icon">🌱</div><h4>पर्यावरण</h4><p>पॉलीथिन जलाना बंद करें। पेड़ काटने से पहले सोचें।</p></div>
+    <div class="awareness-card"><div class="awareness-icon">🧒</div><h4>बाल अधिकार</h4><p>14 साल से कम उम्र में बच्चों से काम नहीं करवाया जा सकता — यह अपराध है।</p></div>
+  </div>
+</section>
+<div class="section-divider"></div>
+
+<!-- ENCOURAGEMENT -->
+<section id="encourage" class="fade-in">
+  <div class="section-title">💪 प्रोत्साहन — आगे बढ़ो!</div>
+  <div class="encourage-cards">
+    <div class="enc-card c1"><div class="enc-icon">📖</div><h4>शिक्षा ही शक्ति है</h4><p>हमारे गांव की साक्षरता दर 56.76% है। हम मिलकर इसे 80% से ऊपर ले जाएंगे। अपने बच्चों को पढ़ाएं।</p></div>
+    <div class="enc-card c2"><div class="enc-icon">🌟</div><h4>गांव पर गर्व करो</h4><p>भैसानी इस्लामपुर शामली तहसील का सबसे बड़ा गांव है। हम बड़े हैं — जिम्मेदारी भी बड़ी है।</p></div>
+    <div class="enc-card c3"><div class="enc-icon">🤝</div><h4>एकता में बल है</h4><p>जाति, धर्म से ऊपर उठकर एक गांव, एक परिवार — यही हमारी असली पहचान है।</p></div>
+    <div class="enc-card c4"><div class="enc-icon">🚀</div><h4>युवाओं से उम्मीद</h4><p>हमारे युवा सरकारी नौकरी, व्यापार और खेती में नाम रोशन करें। गांव छोड़ो नहीं — सुधारो।</p></div>
+  </div>
+</section>
+<div class="section-divider"></div>
+
+<!-- EDUCATION -->
+<section id="education" class="fade-in">
+  <div class="section-title">🎓 शिक्षा एवं विद्यालय</div>
+
+  <!-- Literacy Stats -->
+  <div style="background:var(--green-lt);border:1px solid var(--border);border-radius:10px;padding:1rem;margin-bottom:1.2rem;">
+    <div style="font-size:.85rem;font-weight:600;color:var(--green);margin-bottom:.6rem;">📊 साक्षरता आंकड़े (Census 2011)</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:.7rem;">
+      <div style="background:#fff;border-radius:8px;padding:.7rem;text-align:center;border:1px solid var(--border);">
+        <div style="font-size:1.4rem;font-weight:700;color:var(--green);">56.76%</div>
+        <div style="font-size:.72rem;color:var(--muted);">कुल साक्षरता</div>
+      </div>
+      <div style="background:#fff;border-radius:8px;padding:.7rem;text-align:center;border:1px solid var(--border);">
+        <div style="font-size:1.4rem;font-weight:700;color:var(--green);">64.94%</div>
+        <div style="font-size:.72rem;color:var(--muted);">पुरुष साक्षरता</div>
+      </div>
+      <div style="background:#fff;border-radius:8px;padding:.7rem;text-align:center;border:1px solid var(--border);">
+        <div style="font-size:1.4rem;font-weight:700;color:#c0392b;">47.71%</div>
+        <div style="font-size:.72rem;color:var(--muted);">महिला साक्षरता</div>
+      </div>
+      <div style="background:#fff;border-radius:8px;padding:.7rem;text-align:center;border:1px solid var(--border);">
+        <div style="font-size:1.4rem;font-weight:700;color:var(--saffron);">7,203</div>
+        <div style="font-size:.72rem;color:var(--muted);">साक्षर व्यक्ति</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Madrasas -->
+  <div class="info-card" style="margin-bottom:1rem;">
+    <div style="font-size:1rem;font-weight:700;color:var(--green);border-left:4px solid var(--saffron);padding-left:.7rem;margin-bottom:.9rem;">🕌 मदरसे (Madaris)</div>
+    <div class="info-row"><span class="info-icon">📍</span><span class="info-key">मदरसा 1</span><span class="info-val">— (यहाँ नाम जोड़ें)</span></div>
+    <div class="info-row"><span class="info-icon">📍</span><span class="info-key">मदरसा 2</span><span class="info-val">— (यहाँ नाम जोड़ें)</span></div>
+    <div class="info-row"><span class="info-icon">📍</span><span class="info-key">मदरसा 3</span><span class="info-val">— (यहाँ नाम जोड़ें)</span></div>
+    <div class="info-row"><span class="info-icon">👨‍🏫</span><span class="info-key">प्रधानाचार्य</span><span class="info-val">— (यहाँ नाम जोड़ें)</span></div>
+    <div style="background:var(--saffron-lt);border-radius:6px;padding:.6rem .8rem;margin-top:.6rem;font-size:.76rem;color:#7a4f00;">
+      📝 मदरसों के नाम और विवरण जोड़ने के लिए प्रधान जी से संपर्क करें।
+    </div>
+  </div>
+
+  <!-- Primary Schools -->
+  <div class="info-card" style="margin-bottom:1rem;">
+    <div style="font-size:1rem;font-weight:700;color:var(--green);border-left:4px solid var(--saffron);padding-left:.7rem;margin-bottom:.9rem;">🏫 प्राथमिक विद्यालय (Primary Schools)</div>
+    <div class="info-row"><span class="info-icon">🏫</span><span class="info-key">विद्यालय 1</span><span class="info-val">— (यहाँ नाम जोड़ें)</span></div>
+    <div class="info-row"><span class="info-icon">🏫</span><span class="info-key">विद्यालय 2</span><span class="info-val">— (यहाँ नाम जोड़ें)</span></div>
+    <div class="info-row"><span class="info-icon">🏫</span><span class="info-key">विद्यालय 3</span><span class="info-val">— (यहाँ नाम जोड़ें)</span></div>
+    <div class="info-row"><span class="info-icon">👨‍🏫</span><span class="info-key">प्रधानाध्यापक</span><span class="info-val">— (यहाँ नाम जोड़ें)</span></div>
+    <div class="info-row"><span class="info-icon">📞</span><span class="info-key">संपर्क</span><span class="info-val">— (यहाँ नंबर जोड़ें)</span></div>
+    <div style="background:var(--green-lt);border-radius:6px;padding:.6rem .8rem;margin-top:.6rem;font-size:.76rem;color:#1a5c2e;">
+      📝 विद्यालयों के नाम और विवरण जोड़ने के लिए हमसे संपर्क करें।
+    </div>
+  </div>
+
+  <!-- Education encouragement -->
+  <div style="background:linear-gradient(120deg,#1a6b3a,#2d9e5e);border-radius:12px;padding:1.2rem;color:#fff;">
+    <div style="font-size:1rem;font-weight:700;margin-bottom:.5rem;">📖 शिक्षा की अपील</div>
+    <p style="font-size:.8rem;opacity:.95;line-height:1.7;">
+      हमारे गांव की साक्षरता दर <strong>56.76%</strong> है जो राज्य औसत से कम है। हर बच्चे को — चाहे लड़का हो या लड़की — स्कूल या मदरसे भेजें। <strong>शिक्षा ही असली सम्पत्ति है।</strong> 6 से 14 साल के बच्चों को शिक्षा देना हमारा कानूनी दायित्व है।
+    </p>
+  </div>
+</section>
+<div class="section-divider"></div>
+
+<!-- GALLERY -->
+<section id="gallery" class="fade-in">
+  <div class="section-title">📷 फ़ोटो गैलरी</div>
+  <div class="gallery-grid">
+    <div><div class="gallery-item">🌾</div><div class="gallery-caption">हरे-भरे खेत</div></div>
+    <div><div class="gallery-item">🕌</div><div class="gallery-caption">मस्जिद / धार्मिक स्थल</div></div>
+    <div><div class="gallery-item">🏫</div><div class="gallery-caption">प्राथमिक विद्यालय</div></div>
+    <div><div class="gallery-item">🌅</div><div class="gallery-caption">गांव का सूर्योदय</div></div>
+    <div><div class="gallery-item">🏘️</div><div class="gallery-caption">गांव का दृश्य</div></div>
+    <div><div class="gallery-item">🤝</div><div class="gallery-caption">पंचायत बैठक</div></div>
+  </div>
+  <p style="font-size:.78rem;color:var(--muted);margin-top:.8rem;text-align:center;">📸 असली फ़ोटो जोड़ने के लिए हमसे संपर्क करें।</p>
+</section>
+<div class="section-divider"></div>
+
+<!-- CONTACT / COMPLAINT / SUGGESTION -->
+<section id="contact" class="fade-in">
+  <div class="section-title">📬 संपर्क / शिकायत / सुझाव</div>
+  <div class="form-card">
+    <div class="form-tabs">
+      <button class="tab-btn active" onclick="switchTab('contact')">📬 संपर्क</button>
+      <button class="tab-btn" onclick="switchTab('complaint')">⚠️ शिकायत</button>
+      <button class="tab-btn" onclick="switchTab('suggestion')">💡 सुझाव</button>
+    </div>
+
+    <div id="tab-contact">
+      <div class="form-group"><label>आपका नाम</label><input type="text" placeholder="जैसे: रामेश्वर सिंह"></div>
+      <div class="form-group"><label>मोबाइल नंबर</label><input type="tel" placeholder="+91 XXXXXXXXXX"></div>
+      <div class="form-group"><label>संदेश</label><textarea placeholder="हमें लिखें..."></textarea></div>
+      <button class="submit-btn" onclick="submitForm('contact')">📤 भेजें</button>
+      <div class="success-msg" id="success-contact">✅ आपका संदेश प्राप्त हो गया। हम जल्द संपर्क करेंगे।</div>
+    </div>
+
+    <div id="tab-complaint" style="display:none;">
+      <div class="form-group"><label>आपका नाम</label><input type="text" placeholder="नाम लिखें"></div>
+      <div class="form-group"><label>शिकायत का विषय</label>
+        <select><option>-- चुनें --</option><option>सड़क / नाला</option><option>बिजली / पानी</option><option>भ्रष्टाचार</option><option>स्वास्थ्य सेवा</option><option>योजना का लाभ नहीं मिला</option><option>अन्य</option></select>
+      </div>
+      <div class="form-group"><label>शिकायत का विवरण</label><textarea placeholder="पूरी बात लिखें..."></textarea></div>
+      <button class="submit-btn" onclick="submitForm('complaint')">📤 शिकायत दर्ज करें</button>
+      <div class="success-msg" id="success-complaint">✅ आपकी शिकायत दर्ज हो गई। प्रधान जी को सूचित किया जाएगा।</div>
+    </div>
+
+    <div id="tab-suggestion" style="display:none;">
+      <div class="form-group"><label>आपका नाम (वैकल्पिक)</label><input type="text" placeholder="नाम (ज़रूरी नहीं)"></div>
+      <div class="form-group"><label>विषय</label>
+        <select><option>-- चुनें --</option><option>विकास कार्य</option><option>शिक्षा</option><option>स्वास्थ्य</option><option>रोजगार</option><option>स्वच्छता</option><option>अभियान</option><option>अन्य</option></select>
+      </div>
+      <div class="form-group"><label>आपका सुझाव</label><textarea placeholder="अपना सुझाव विस्तार से लिखें..."></textarea></div>
+      <button class="submit-btn" onclick="submitForm('suggestion')">💡 सुझाव भेजें</button>
+      <div class="success-msg" id="success-suggestion">✅ आपका सुझाव मिल गया। धन्यवाद!</div>
+    </div>
+  </div>
+
+  <!-- Emergency Numbers -->
+  <div class="info-card" style="margin-top:1rem;">
+    <div class="section-title" style="font-size:.95rem;margin-bottom:.8rem;">📞 आपातकालीन नंबर</div>
+    <div class="info-row"><span class="info-icon">🚓</span><span class="info-key">पुलिस</span><span class="info-val">100</span></div>
+    <div class="info-row"><span class="info-icon">🚑</span><span class="info-key">एम्बुलेंस</span><span class="info-val">108</span></div>
+    <div class="info-row"><span class="info-icon">🔥</span><span class="info-key">दमकल</span><span class="info-val">101</span></div>
+    <div class="info-row"><span class="info-icon">♀️</span><span class="info-key">महिला हेल्पलाइन</span><span class="info-val">181</span></div>
+    <div class="info-row"><span class="info-icon">👶</span><span class="info-key">चाइल्डलाइन</span><span class="info-val">1098</span></div>
+    <div class="info-row"><span class="info-icon">🧑‍⚕️</span><span class="info-key">स्वास्थ्य हेल्पलाइन</span><span class="info-val">104</span></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>🌿 <strong>ग्राम पंचायत भैसानी इस्लामपुर</strong></div>
+  <div style="margin:.4rem 0;">तहसील शामली | जिला शामली | उत्तर प्रदेश</div>
+  <div style="margin-top:.6rem;opacity:.7;font-size:.72rem;">प्रधान: आदिल प्रधान | जनगणना डेटा: Census of India 2011</div>
+  <div style="margin-top:.4rem;opacity:.6;font-size:.7rem;">© 2026 भैसानी इस्लामपुर — सभी अधिकार सुरक्षित</div>
+</footer>
+
+<script>
+// Tab switching
+function switchTab(tab) {
+  ['contact','complaint','suggestion'].forEach(t => {
+    document.getElementById('tab-' + t).style.display = t === tab ? 'block' : 'none';
+  });
+  document.querySelectorAll('.tab-btn').forEach((btn, i) => {
+    btn.classList.toggle('active', ['contact','complaint','suggestion'][i] === tab);
+  });
+}
+
+// Form submit (demo)
+function submitForm(type) {
+  const msg = document.getElementById('success-' + type);
+  msg.style.display = 'block';
+  setTimeout(() => { msg.style.display = 'none'; }, 4000);
+}
+
+// Fade-in on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
