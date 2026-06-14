@@ -658,7 +658,23 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 <!-- 1. Menu Icon (☰) -->
 <div class="menu-icon" onclick="toggleMenu()" style="position:fixed; top:12px; left:15px; z-index:1000; font-size:24px; cursor:pointer; color:white; background:rgba(26, 107, 58, 0.9); padding:5px 12px; border-radius:6px; box-shadow:0 2px 5px rgba(0,0,0,0.2);">☰</div>
 
-<!-- 2. Hidden Navigation Menu -->
+<!-- 2. Hidden Navigation Menu -->     <!-- Google Translate Language Option -->
+    <div style="padding: 10px 25px; border-bottom: 1px solid #d6e4da;">
+        <span style="font-size:0.85rem; color:#5a6472; font-weight:bold;">🌐 भाषा चुनें (Language):</span>
+        <div id="google_translate_element" style="margin-top:8px;"></div>
+    </div>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'hi', 
+                includedLanguages: 'en,hi,ur', /* English, Hindi, Urdu */
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  
 <nav id="nav-menu" style="display:none; background:#f9fbf9; position:fixed; top:0; left:0; width:100%; height:100%; z-index:999; padding-top:70px; overflow-y:auto;">
     <h3 style="padding:0 25px; color:#1a6b3a; margin-bottom:10px;">मेनू (Menu)</h3>
     <a href="#mission" onclick="toggleMenu()" style="display:block; padding:15px 25px; text-decoration:none; color:#1a1a1a; font-weight:600; border-bottom:1px solid #d6e4da;">🏛️ मिशन: जागरूक ग्राम</a>
