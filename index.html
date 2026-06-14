@@ -654,7 +654,7 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script><!-- === यहाँ से नया काम शुरू === -->
-
+<style> @media(max-width: 768px) { .nav-brand { margin-left: 55px !important; } } </style>
 <!-- 1. Menu Icon (☰) -->
 <div class="menu-icon" onclick="toggleMenu()" style="position:fixed; top:12px; left:15px; z-index:1000; font-size:24px; cursor:pointer; color:white; background:rgba(26, 107, 58, 0.9); padding:5px 12px; border-radius:6px; box-shadow:0 2px 5px rgba(0,0,0,0.2);">☰</div>
 
